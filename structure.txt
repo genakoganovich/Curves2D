@@ -1,0 +1,11 @@
+curve_project/
+│
+├── main.py                      # Главный файл
+├── curve_definition.py          # Определение кривой
+├── curve_math.py                # Математические расчёты
+├── point_selector.py            # Выбор произвольных точек
+├── visualization_base.py        # Основная визуализация (только кривая)
+├── visualization_points.py      # Добавление точек
+├── visualization_tangents.py    # Добавление касательных
+├── visualization_normals.py     # Добавление нормалей
+└── config.py                    # Настройки (опционально)
