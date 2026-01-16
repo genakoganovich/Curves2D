@@ -290,8 +290,6 @@ def verify_orthogonality(theta):
     return tx * nx + ty * ny
 
 
-# === Дополнительные утилиты ===
-
 def get_curvature_extremes(num_samples=1000):
     """
     Находит точки с максимальной и минимальной кривизной.
@@ -321,3 +319,41 @@ def get_curvature_extremes(num_samples=1000):
         },
         'mean_curvature': np.mean(curvatures)
     }
+
+
+def get_evolute_points(theta_points):
+    """
+    Вычисляет точки эволюты для выбранных точек кривой.
+
+    Эволюта — геометрическое место центров кривизны.
+
+    Args:
+        theta_points: массив или список углов θ
+
+    Returns:
+        list: список словарей
+            [
+                {
+                    'theta': float,
+                    'curve_point': (x, y),
+                    'evolute_point': (x_e, y_e)
+                },
+                ...
+            ]
+    """
+    from curve_definition import get_cartesian_coordinates
+
+    theta_points = np.asarray(theta_points)
+    results = []
+
+    for theta in theta_points:
+        x, y = get_cartesian_coordinates(theta)
+        x_e, y_e = compute_curvature_center(theta)
+
+        results.append({
+            'theta': float(theta),
+            'curve_point': (float(x), float(y)),
+            'evolute_point': (float(x_e), float(y_e))
+        })
+
+    return results

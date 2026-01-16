@@ -26,7 +26,7 @@ def select_random_points(num_points=None, seed=None):
     return np.sort(theta_points)
 
 
-def select_uniform_points(num_points=10):
+def select_uniform_points(num_points=NUM_RANDOM_POINTS):
     """
     Выбирает равномерно распределённые точки.
 
